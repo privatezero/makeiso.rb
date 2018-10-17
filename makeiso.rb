@@ -16,8 +16,10 @@ while $exit_check != 'Q'
   end
   puts @target_disc
   disc_id = File.basename(@target_disc,'.volume')
+  Dir.mkdir(disc_id )
   puts disc_id + '.iso'
   system('umount /dev/sr0')
+  system('ddrescue','-b 2048','-r4','-v','/dev/sr0',"#{disc_id}/#{disc_id}.iso","#{disc_id}/#{disc_id}.log")
   system('eject')
   @target_disc = nil
   puts "Please insert DVD and press 'Enter' to continue, or type Q and press Enter to quit"
