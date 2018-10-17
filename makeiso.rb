@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 def look_for_target_disc()
   @new_mounted_drives = Dir.glob('/media/' + @user + '/*')
   @target_disc = (@new_mounted_drives - @old_mounted_drives)[0]
